@@ -15,7 +15,7 @@ export default {
             recognition.interimResults = false // Set to true for live updates
             recognition.maxAlternatives = 1
 
-            transcript.value = 'Listening... 🎧';]
+            transcript.value = 'Listening... 🎧';
 
             recognition.start()
 
