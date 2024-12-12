@@ -2,7 +2,9 @@
 
 <template>
   <div>
-    <div class="flex flex-col p-8 h-screen w-full justify-center items-center bg-indigo-lightest">
+    <div
+      class="flex flex-col p-8 h-screen w-full justify-center items-center bg-indigo-lightest"
+    >
       <p class="text-gray-600 mb-4">{{ transcript }}</p>
       <div
         class="input-button bg-indigo-500 rounded-full text-sm py-8x min-h-10 flex justify-center items-center text-white aspect-square w-3/4"
@@ -13,7 +15,7 @@
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="white"
-            class="size-6"
+            class="size-24"
           >
             <!-- https://heroicons.com/solid -->
             <path

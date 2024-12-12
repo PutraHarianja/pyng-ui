@@ -1,4 +1,5 @@
 import { computed, ref, defineComponent } from 'vue';
+import { useAnalyzesTextHandler } from "@/composables/useAnalyzesTextHandler";
 
 const buttonStateWordingMapping = {
   default: {
@@ -17,14 +18,14 @@ const buttonStateWordingMapping = {
 
 export default defineComponent({
   emits: ['firstLookExpired'],
-  setup(props, {emit}) {
+  setup(props, { emit }) {
+    const { handleText } = useAnalyzesTextHandler();
     const transcript = ref('Your voice input will appear here...');
     const buttonState = ref(buttonStateWordingMapping.default)
 
     const startVoiceRecognition = () => {
       if (buttonState.value.state !== buttonStateWordingMapping.default.state) return
-      
-      console.log('get input')
+
       transcript.value = 'Your voice input will appear here...'
       if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
@@ -42,20 +43,22 @@ export default defineComponent({
 
         recognition.onresult = (event) => {
           transcript.value = `You said: "${event.results[0][0].transcript}"`
+
+          buttonState.value = buttonStateWordingMapping.generating
+
+          handleText(transcript.value)
+          setTimeout(() => {
+            emit('firstLookExpired')
+            buttonState.value = buttonStateWordingMapping.default
+          }, 3000)
         }
 
         recognition.onerror = (event) => {
-          transcript.value = `Error: ${event.error}`
+          transcript.value = `Error: ${event.error}. Please try again.`
         }
 
         recognition.onend = () => {
-          buttonState.value = buttonStateWordingMapping.generating
-
-          buttonState.value = buttonStateWordingMapping.default
-
-          setTimeout(() => {
-            emit('firstLookExpired')
-          }, 1500)
+          console.log('done hearing, we close the mic already')
         }
       } else {
         transcript.value = 'Sorry, your browser does not support voice recognition.'
