@@ -72,5 +72,9 @@ export const useProductStore = defineStore('product', {
         this.loading = false;
       }
     },
+    resetProducts() {
+      this.introMessage = ''
+      this.products = []
+    }
   },
 });

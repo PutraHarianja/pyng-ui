@@ -15,11 +15,12 @@ export function useAnalyzesTextHandler() {
 
     const handleText = async (text) => {
         mainMessageStore.updateButtonState('generating')
+        productStore.resetProducts()
+        locationStore.resetLocations()
 
         const lowercasedText = text.toLowerCase();
 
         if (
-            lowercasedText.includes("product") &&
             lowercasedText.includes("phone")
         ) {
             console.log("text decided called productAPI")

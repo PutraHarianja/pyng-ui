@@ -14,10 +14,6 @@ export const useLocationStore = defineStore('location', {
     error: null,
   }),
   actions: {
-    setUserLocation(userLocation) {
-      console.log('location set to', userLocation.longitute)
-      this.userLocation = userLocation
-    },
     getUserLocation() {
       return new Promise((resolve, reject) => {
         if (navigator.geolocation) {
@@ -52,6 +48,7 @@ export const useLocationStore = defineStore('location', {
         console.log(`called API http://localhost:5000/stores with ${this.userLocation.latitude}, ${this.userLocation.longitude}`)
 
         setTimeout(() => {
+
           const response = {
             message: "Certainly, here is the list of locations you requested, starting with the nearest to your location, feel free to reach out if you need more details.",
             data: [{
@@ -86,6 +83,11 @@ export const useLocationStore = defineStore('location', {
       } finally {
         this.loading = false;
       }
+    },
+
+    resetLocations() {
+      this.introMessage = ''
+      this.locations = []
     }
 
   },
