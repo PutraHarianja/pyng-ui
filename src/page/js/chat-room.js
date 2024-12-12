@@ -1,7 +1,7 @@
 import { computed, onBeforeMount, onMounted, ref } from 'vue'
 import MainResultView from "@/components/MainResultView.vue";
 import EntryView from '@/components/EntryView.vue'
-import { useLocationStore } from '@/stores/location';
+import { useMainMessageStore } from '@/stores/mainMessage';
 
 export default {
   components: {
@@ -9,13 +9,13 @@ export default {
     EntryView
   },
   setup() {
-    const isFirstLook = ref(true)
+    const mainMessageStore = useMainMessageStore()
 
-    const firstLookExpired = () => {
-      isFirstLook.value = false
-    }
+    const firstLookExpired = computed(() => {
+      return mainMessageStore.gotAnswer
+    })
+
     return {
-      isFirstLook,
       firstLookExpired
     }
   },

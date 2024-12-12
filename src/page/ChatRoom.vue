@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <EntryView v-if="isFirstLook" @firstLookExpired="firstLookExpired" />
+    <EntryView v-if="!firstLookExpired" />
     <MainResultView v-else />
   </div>
 </template>
