@@ -1,6 +1,7 @@
 import { computed, onMounted, ref } from 'vue'
 import MainResultView from "@/components/MainResultView.vue";
 import EntryView from '@/components/EntryView.vue'
+import { useLocationStore } from '@/stores/location';
 
 export default {
   components: {
@@ -11,9 +12,9 @@ export default {
     const isFirstLook = ref(true)
     const userLocation = ref(null);
     const locationError = ref(null)
+    const locationStore = useLocationStore();
 
     const firstLookExpired = () => {
-      console.log('firstLookExpired')
       isFirstLook.value = false
     }
 
@@ -30,18 +31,18 @@ export default {
               console.error('Error getting location:', error.message);
               reject(error);
             }
-          );
-        });
+          )
+        })
       } else {
         console.error('Geolocation is not supported by this browser.');
         throw new Error('Geolocation not supported');
       }
-    };
+    }
     
     onMounted(async () => {
-      // setTimeout(() => {
-      //   firstLookExpired()
-      // }, 0);  
+      setTimeout(() => {
+        firstLookExpired()
+      }, 1000);  
 
       try {
         const location = await getUserLocation();
@@ -51,10 +52,13 @@ export default {
         locationError.value = error.message;
         console.error('Failed to get user location:', error.message);
       }
+
+      locationStore.fetchLocations(userLocation.value.latitude, userLocation.value.longitude); 
     })
     return {
       isFirstLook,
-      firstLookExpired
+      firstLookExpired,
+      locationStore
     }
   },
 }

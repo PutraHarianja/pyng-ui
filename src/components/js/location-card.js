@@ -1,4 +1,4 @@
-import { defineComponent, toRefs } from "vue";
+import { defineComponent, toRefs, computed } from "vue";
 
 export default defineComponent({
   name: "LocationCard",
@@ -15,15 +15,31 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    url: {
+      type: String,
+      required: true,
+    },
   },
-  setup(props) {
-    // Use `toRefs` to make props reactive
-    const { image, locationName, address } = toRefs(props);
+  setup(props, { emit }) {
+    const { image, locationName, address, url } = toRefs(props);
+
+    const cardClicked = () => {
+      window.open(url.value, '_blank');
+    }
+
+    const imageUrl = computed(() => {
+      console.log('image', image.value)
+      return image.value
+    })
 
     return {
       image,
       locationName,
       address,
+      imageUrl,
+
+      // method
+      cardClicked
     };
   },
 });

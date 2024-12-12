@@ -51,9 +51,8 @@ export default defineComponent({
         recognition.onend = () => {
           buttonState.value = buttonStateWordingMapping.generating
 
-          // get state to default
           buttonState.value = buttonStateWordingMapping.default
-          console.log('emit firstlookexpired')
+
           setTimeout(() => {
             emit('firstLookExpired')
           }, 1500)

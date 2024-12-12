@@ -2,8 +2,8 @@
 
 <template>
   <div>
-    <div class="flex flex-col p-8 h-screen w-full justify-center items-center">
-      <p class="text-gray-600">{{ transcript }}</p>
+    <div class="flex flex-col p-8 h-screen w-full justify-center items-center bg-indigo-lightest">
+      <p class="text-gray-600 mb-4">{{ transcript }}</p>
       <div
         class="input-button bg-indigo-500 rounded-full text-sm py-8x min-h-10 flex justify-center items-center text-white aspect-square w-3/4"
         @click="startVoiceRecognition"
@@ -32,4 +32,8 @@
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.input-button {
+  aspect-ratio: 0.95 / 1;
+}
+</style>

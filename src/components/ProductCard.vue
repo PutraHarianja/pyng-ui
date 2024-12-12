@@ -1,7 +1,7 @@
 <script src="./js/product-card.js"></script>
 
 <template>
-  <div class="flex border rounded-lg shadow-sm p-3 mb-4 bg-white">
+  <div class="flex border rounded-lg shadow-sm p-3 mb-4 bg-white" @click="onCardClicked">
     <!-- Left: Image -->
     <img :src="image" alt="Product" class="w-20 h-30 object-cover rounded-md" />
 

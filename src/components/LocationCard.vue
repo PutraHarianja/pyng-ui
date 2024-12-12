@@ -1,10 +1,10 @@
 <script src="./js/location-card.js"></script>
 
 <template>
-  <div class="border rounded-lg shadow-md bg-white overflow-hidden mb-4">
+  <div class="border rounded-lg shadow-md bg-white overflow-hidden mb-4" @click="cardClicked">
     <!-- Top: Image -->
     <div class="relative w-full h-24">
-      <img :src="image" alt="Location" class="w-full h-full object-cover" />
+      <img :src="imageUrl" alt="Location" class="w-full h-full object-cover" />
     </div>
 
     <!-- Bottom: Content -->
