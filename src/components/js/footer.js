@@ -1,29 +1,24 @@
 import { computed, ref } from 'vue';
-
-const buttonStateWordingMapping = {
-  default: {
-    state: 'default',
-    wording: 'Click to ask'
-  },
-  listening: {
-    state: 'listening',
-    wording: 'Listening...'
-  },
-  generating: {
-    state: 'generating',
-    wording: 'Generating'
-  }
-}
+import { useAnalyzesTextHandler } from "@/composables/useAnalyzesTextHandler";
+import { useMainMessageStore } from "@/stores/mainMessage";
 
 export default {
   setup() {
-    const transcript = ref('Your voice input will appear here...');
-    const buttonState = ref(buttonStateWordingMapping.default)
+    // Variable declaration
+    const mainMessageStore = useMainMessageStore()
+    const { handleText } = useAnalyzesTextHandler()
 
+    // Computed
+    const transcript = ref('Your voice input will appear here...')
+
+    const buttonState = computed(() => {
+      return mainMessageStore.buttonState
+    })
+
+    // Method
     const startVoiceRecognition = () => {
-      if (buttonState.value.state !== buttonStateWordingMapping.default.state) return
-      
-      console.log('get input')
+      if (buttonState.value.state !== mainMessageStore.buttonStateWordingMapping.default.state) return
+
       transcript.value = 'Your voice input will appear here...'
       if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
@@ -33,7 +28,7 @@ export default {
         recognition.interimResults = false // Set to true for live updates
         recognition.maxAlternatives = 1
 
-        buttonState.value = buttonStateWordingMapping.listening
+        mainMessageStore.updateButtonState('listening')
 
         transcript.value = 'Listening... 🎧';
 
@@ -41,22 +36,19 @@ export default {
 
         recognition.onresult = (event) => {
           transcript.value = `You said: "${event.results[0][0].transcript}"`
+          handleText(transcript.value)
         }
 
         recognition.onerror = (event) => {
-          transcript.value = `Error: ${event.error}`
+          transcript.value = `Error: ${event.error}. Please try again.`
         }
 
         recognition.onend = () => {
-          buttonState.value = buttonStateWordingMapping.generating
-
-          // get state to default
-          buttonState.value = buttonStateWordingMapping.default
+          transcript.value += '(done hearing, mic close already)'
         }
       } else {
         transcript.value = 'Sorry, your browser does not support voice recognition.'
       }
-
     }
 
     return {

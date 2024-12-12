@@ -3,15 +3,20 @@ import { useAnalyzesTextHandler } from "@/composables/useAnalyzesTextHandler";
 import { useMainMessageStore } from "@/stores/mainMessage";
 
 export default defineComponent({
-  emits: ['firstLookExpired'],
+
   setup(props, { emit }) {
+    // Variable declaration
     const mainMessageStore = useMainMessageStore()
     const { handleText } = useAnalyzesTextHandler()
 
+    // Computed
     const transcript = ref('Your voice input will appear here...')
+
     const buttonState = computed(() => {
       return mainMessageStore.buttonState
     })
+
+    // Method
     const startVoiceRecognition = () => {
       if (buttonState.value.state !== mainMessageStore.buttonStateWordingMapping.default.state) return
 
@@ -40,13 +45,11 @@ export default defineComponent({
         }
 
         recognition.onend = () => {
-          console.log('done hearing, we close the mic already')
           transcript.value += '(done hearing, mic close already)'
         }
       } else {
         transcript.value = 'Sorry, your browser does not support voice recognition.'
       }
-
     }
 
     return {
