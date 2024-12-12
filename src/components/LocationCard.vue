@@ -8,7 +8,7 @@
     <!-- Top: Image -->
     <div class="relative w-full h-24">
       <img
-        :src="imageUrl"
+        :src="image"
         alt="Location"
         class="w-full h-full object-cover"
         referrerPolicy="no-referrer"

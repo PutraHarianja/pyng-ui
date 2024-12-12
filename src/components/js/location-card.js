@@ -27,16 +27,10 @@ export default defineComponent({
       window.open(url.value, '_blank');
     }
 
-    const imageUrl = computed(() => {
-      console.log('image', image.value)
-      return image.value
-    })
-
     return {
       image,
       locationName,
       address,
-      imageUrl,
 
       // method
       cardClicked

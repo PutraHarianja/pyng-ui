@@ -10,17 +10,17 @@ export const useProductStore = defineStore('product', {
     error: null,
   }),
   actions: {
-    async fetchProducts(userText, success = () => {}, failed = () => {}) {
+    async fetchProducts(userText, success = () => { }, failed = () => { }) {
       this.loading = true;
       this.error = null;
       try {
         // const response = await axios.post('http://localhost:5000/products', {
         //   userText,
         // });
-        
+
         setTimeout(() => {
 
-          
+
           const response = {
             message: "As requested, here is a list of our products tailored to your needs",
             data: [
@@ -59,12 +59,11 @@ export const useProductStore = defineStore('product', {
               }
             ]
           }
-  
+
           this.introMessage = response.message
           this.products = response.data
-  
-          success(response.data)
 
+          success(response.data)
 
         }, 3000);
       } catch (err) {

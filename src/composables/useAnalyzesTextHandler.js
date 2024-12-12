@@ -8,7 +8,13 @@ export function useAnalyzesTextHandler() {
     const locationStore = useLocationStore();
     const mainMessageStore = useMainMessageStore();
 
+    const doneExecute = (resp) => {
+        mainMessageStore.updateGotAnswer(Boolean(resp));
+        mainMessageStore.updateButtonState('default')
+    }
+
     const handleText = async (text) => {
+        mainMessageStore.updateButtonState('generating')
         const lowercasedText = text.toLowerCase();
 
         if (
@@ -16,8 +22,7 @@ export function useAnalyzesTextHandler() {
             lowercasedText.includes("phone")
         ) {
             console.log("text decided called productAPI")
-            await productStore.fetchProducts({ userText: text });
-            mainMessageStore.updateGotAnswer(true);
+            await productStore.fetchProducts(text, doneExecute);
             return;
         }
 
@@ -26,16 +31,15 @@ export function useAnalyzesTextHandler() {
             lowercasedText.includes("near")
         ) {
             console.log("text decided called locationAPI")
-            await locationStore.fetchLocations();
-            mainMessageStore.updateGotAnswer(true);
+            await locationStore.fetchLocations(doneExecute);
             return;
         }
 
         console.log("text decided can't mapped any API")
         mainMessageStore.updateIntroMessage(
             "Sorry, this request is not mapped to our model."
-        );
-        mainMessageStore.updateGotAnswer(false);
+        )
+        doneExecute(false)
         return;
     };
 
