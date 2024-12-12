@@ -1,6 +1,6 @@
 <script setup></script>
 
-<template>
+<template class="bg-indigo-lightest">
   <RouterView />
 </template>
 

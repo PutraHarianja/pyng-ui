@@ -37,7 +37,6 @@ export default defineComponent({
 
         recognition.onresult = (event) => {
           transcript.value = `You said: "${event.results[0][0].transcript}"`
-          handleText(transcript.value)
         }
 
         recognition.onerror = (event) => {
@@ -46,16 +45,26 @@ export default defineComponent({
 
         recognition.onend = () => {
           transcript.value += '\n(mic close already)'
+          handleText(transcript.value)
         }
       } else {
         transcript.value = 'Sorry, your browser does not support voice recognition.'
       }
     }
 
+
+    // transition focus
+    const showFirst = ref(true)
+
+    setInterval(() => {
+      showFirst.value = !showFirst.value
+    }, 2000);
+
     return {
       transcript,
       startVoiceRecognition,
-      buttonState
+      buttonState,
+      showFirst
     }
   },
 })

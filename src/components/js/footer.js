@@ -36,7 +36,6 @@ export default {
 
         recognition.onresult = (event) => {
           transcript.value = `You said: "${event.results[0][0].transcript}"`
-          handleText(transcript.value)
         }
 
         recognition.onerror = (event) => {
@@ -45,6 +44,7 @@ export default {
 
         recognition.onend = () => {
           transcript.value += '(done hearing, mic close already)'
+          handleText(transcript.value)
         }
       } else {
         transcript.value = 'Sorry, your browser does not support voice recognition.'
