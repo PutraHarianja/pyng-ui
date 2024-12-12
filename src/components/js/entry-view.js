@@ -45,7 +45,7 @@ export default defineComponent({
         }
 
         recognition.onend = () => {
-          transcript.value += '(done hearing, mic close already)'
+          transcript.value += '\n(mic close already)'
         }
       } else {
         transcript.value = 'Sorry, your browser does not support voice recognition.'

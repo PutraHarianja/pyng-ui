@@ -31,7 +31,7 @@ export const useMainMessageStore = defineStore('mainMessage', () => {
 
   const updateGotAnswer = (boolStatus) => {
     gotAnswer.value = boolStatus
-    if (!firstViewExpired.value) firstViewExpired.value = true
+    if (boolStatus && !firstViewExpired.value) firstViewExpired.value = true
   }
 
   const updateButtonState = (state) => {

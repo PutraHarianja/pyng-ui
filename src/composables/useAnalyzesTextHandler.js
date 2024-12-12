@@ -38,11 +38,13 @@ export function useAnalyzesTextHandler() {
         }
 
         console.log("text decided can't mapped any API")
-        mainMessageStore.updateIntroMessage(
-            "Sorry, this request is not mapped to our model."
-        )
-        doneExecute(false)
-        return;
+        setTimeout(() => {
+            mainMessageStore.updateIntroMessage(
+                "Sorry, this request is not mapped to our model."
+            )
+            doneExecute(false)
+            return;
+        }, 3000);
     };
 
     return { handleText };
