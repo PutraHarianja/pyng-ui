@@ -4,7 +4,7 @@
   <div class="flex flex-col min-h-screen bg-indigo-lightest">
     <!-- Header -->
     <div
-      class="w-full items-center bg-indigo-lightest max-w-md py-3 sticky top-0 z-10"
+      class="w-full items-center bg-indigo-lightest max-w-md py-4 sticky top-0 z-10"
     >
       <img src="/pyng_logo.svg" alt="PYNG Logo" class="mx-auto h-14" />
     </div>
@@ -16,7 +16,7 @@
         {{ introMessage }}
       </div>
       <ProductCard
-        v-for="(product, index) in products" 
+        v-for="(product, index) in products"
         :key="index"
         :image="product.image_url"
         :title="product.name"
