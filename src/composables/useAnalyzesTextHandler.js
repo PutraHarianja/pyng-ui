@@ -15,6 +15,7 @@ export function useAnalyzesTextHandler() {
 
     const handleText = async (text) => {
         mainMessageStore.updateButtonState('generating')
+
         const lowercasedText = text.toLowerCase();
 
         if (

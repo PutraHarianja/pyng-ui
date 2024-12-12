@@ -12,7 +12,7 @@ export default {
     const mainMessageStore = useMainMessageStore()
 
     const firstLookExpired = computed(() => {
-      return mainMessageStore.gotAnswer
+      return mainMessageStore.firstViewExpired
     })
 
     return {
