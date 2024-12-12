@@ -48,7 +48,6 @@ export default {
         }
 
         recognition.onend = () => {
-          transcript.value += ' (Speech recognition ended)'
           buttonState.value = buttonStateWordingMapping.generating
 
           // get state to default

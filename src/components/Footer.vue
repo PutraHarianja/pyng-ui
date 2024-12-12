@@ -5,16 +5,12 @@
     <p class="text-gray-600">{{ transcript }}</p>
     <button
       type="button"
-      class="input-button bg-indigo-500 text-sm py-8x min-h-10 w-full flex justify-center items-center text-white"
+      class="input-button bg-indigo-500 rounded-lg text-sm py-8x min-h-10 w-full flex justify-center items-center text-white"
       @click="startVoiceRecognition"
     >
-    {{ buttonState.wording }}
+      {{ buttonState.wording }}
     </button>
   </div>
 </template>
 
-<style scoped>
-.input-button {
-  border-radius: 0.5rem;
-}
-</style>
+<style scoped></style>

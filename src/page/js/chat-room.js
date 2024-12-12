@@ -13,6 +13,7 @@ export default {
     const locationError = ref(null)
 
     const firstLookExpired = () => {
+      console.log('firstLookExpired')
       isFirstLook.value = false
     }
 
@@ -38,9 +39,9 @@ export default {
     };
     
     onMounted(async () => {
-      setTimeout(() => {
-        firstLookExpired()
-      }, 5000);  
+      // setTimeout(() => {
+      //   firstLookExpired()
+      // }, 0);  
 
       try {
         const location = await getUserLocation();

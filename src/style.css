@@ -28,10 +28,7 @@ body {
 }
 
 #app {
-  /* max-width: 487px; */
   height: 100vh;
-  /* margin: 0 auto; */
-  text-align: center;
 }
 
 @media (prefers-color-scheme: light) {

@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         'cream-lightest': '#fffdf9',
+        'indigo-lightest': '#F6F6FF'
       },
     },
   },

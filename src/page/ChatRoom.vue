@@ -2,8 +2,8 @@
 
 <template>
   <div>
-    <EntryView v-if="isFirstLook" @click="firstLookExpired"/>
-    <MainResultView v-else/>
+    <EntryView v-if="isFirstLook" @firstLookExpired="firstLookExpired" />
+    <MainResultView v-else />
   </div>
 </template>
 
