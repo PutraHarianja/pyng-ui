@@ -2,8 +2,8 @@
 
 <template>
   <div>
-    <EntryView v-if="!firstLookExpired" />
-    <MainResultView v-else />
+    <EntryView />
+    <MainResultView />
   </div>
 </template>
 

@@ -20,15 +20,17 @@ export default {
     // Make products reactive using computed
     const products = computed(() => productStore.products)
     const locations = computed(() => locationStore.locations)
+    const buttonState = computed(() => mainMessageStore.buttonState)
     const introMessage = computed(() =>
-      locationStore.introMessage || productStore.introMessage || mainMessageStore.buttonState.wording
+      locationStore.introMessage || productStore.introMessage
     )
 
     return {
       productStore,
       products,
       locations,
-      introMessage
+      introMessage,
+      buttonState
     }
   },
 }

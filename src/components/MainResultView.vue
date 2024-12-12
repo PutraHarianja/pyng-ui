@@ -10,10 +10,21 @@
     </div>
 
     <!-- Room Window -->
-    <div v-if="introMessage" class="w-full max-w-md flex-1 overflow-y-auto p-4">
+    <div class="w-full max-w-md flex-1 overflow-y-auto p-4">
       <!-- Result list -->
       <div class="result-intro my-4">
         {{ introMessage }}
+      </div>
+      <div
+        v-if="buttonState.state === 'generating'"
+        class="flex justify-center my-10"
+      >
+        <img
+          src="@/assets/gear-generating-colored.gif"
+          alt=""
+          srcset=""
+          class="h-72"
+        />
       </div>
       <ProductCard
         v-for="(product, index) in products"
