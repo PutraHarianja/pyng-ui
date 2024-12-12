@@ -4,9 +4,9 @@
   <div class="flex flex-col min-h-screen bg-indigo-lightest">
     <!-- Header -->
     <div
-      class="w-full items-center bg-indigo-lightest max-w-md py-4 sticky top-0 z-10"
+      class="w-full items-center bg-indigo-lightest max-w-md py-6 pb-0 sticky top-0 z-10"
     >
-      <img src="/pyng_logo.svg" alt="PYNG Logo" class="mx-auto h-14" />
+      <img src="/pyng_logo.svg" alt="PYNG Logo" class="mx-auto h-16" />
     </div>
 
     <!-- Room Window -->
