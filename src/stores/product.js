@@ -5,7 +5,7 @@ import axios from 'axios';
 export const useProductStore = defineStore('product', {
   state: () => ({
     introMessage: '',
-    products: [], // Holds the fetched products
+    products: [],
     loading: false,
     error: null,
   }),
@@ -19,7 +19,6 @@ export const useProductStore = defineStore('product', {
         // });
 
         setTimeout(() => {
-
 
           const response = {
             message: "As requested, here is a list of our products tailored to your needs",

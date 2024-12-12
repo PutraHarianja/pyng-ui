@@ -22,15 +22,6 @@ export default {
       locationStore.introMessage || productStore.introMessage || ''
     )
 
-    const userText = ref('')
-
-    const fetchProducts = () => {
-      productStore.fetchProducts(userText.value)
-    };
-
-    onBeforeMount(() => {
-      fetchProducts()
-    })
     return {
       productStore,
       products,
