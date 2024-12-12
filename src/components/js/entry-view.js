@@ -16,6 +16,10 @@ export default defineComponent({
       return mainMessageStore.buttonState
     })
 
+    const additionalMessage = computed(() => {
+      return mainMessageStore.introMessage
+    })
+
     // Method
     const startVoiceRecognition = () => {
       if (buttonState.value.state !== mainMessageStore.buttonStateWordingMapping.default.state) return
@@ -64,7 +68,8 @@ export default defineComponent({
       transcript,
       startVoiceRecognition,
       buttonState,
-      showFirst
+      showFirst,
+      additionalMessage
     }
   },
 })

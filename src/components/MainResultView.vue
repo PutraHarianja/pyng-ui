@@ -24,6 +24,11 @@
             class="h-72"
           />
         </div>
+        <div v-else-if="additionalMessage">
+          <p class="text-red-700 my-5 text-center">
+            {{ additionalMessage }}
+          </p>
+        </div>
         <div v-else>
           <div class="result-intro my-4">
             {{ introMessage }}

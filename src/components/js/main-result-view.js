@@ -21,6 +21,7 @@ export default {
     const products = computed(() => productStore.products)
     const locations = computed(() => locationStore.locations)
     const buttonState = computed(() => mainMessageStore.buttonState)
+    const additionalMessage = computed(() => mainMessageStore.introMessage)
     const introMessage = computed(() =>
       locationStore.introMessage || productStore.introMessage
     )
@@ -30,7 +31,8 @@ export default {
       products,
       locations,
       introMessage,
-      buttonState
+      buttonState,
+      additionalMessage
     }
   },
 }

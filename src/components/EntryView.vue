@@ -45,6 +45,9 @@
         </transition>
       </div>
     </div>
+    <p v-if="additionalMessage" class="text-red-700 my-5 text-center">
+      {{ additionalMessage }}
+    </p>
   </div>
 </template>
 

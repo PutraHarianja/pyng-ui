@@ -17,6 +17,7 @@ export function useAnalyzesTextHandler() {
         mainMessageStore.updateButtonState('generating')
         productStore.resetProducts()
         locationStore.resetLocations()
+        mainMessageStore.resetMainMessage()
 
         const lowercasedText = text.toLowerCase();
 
@@ -40,7 +41,7 @@ export function useAnalyzesTextHandler() {
         console.log("text decided can't mapped any API")
         setTimeout(() => {
             mainMessageStore.updateIntroMessage(
-                "Sorry, this request is not mapped to our model."
+                "Sorry, this request still can't be mapped by our model yet."
             )
             doneExecute(false)
             return;

@@ -38,6 +38,10 @@ export const useMainMessageStore = defineStore('mainMessage', () => {
     buttonState.value = buttonStateWordingMapping[state]
   }
 
+  const resetMainMessage = () => {
+    introMessage.value = ""
+  }
+
   return {
     introMessage,
     gotAnswer,
@@ -46,6 +50,7 @@ export const useMainMessageStore = defineStore('mainMessage', () => {
     buttonState,
     buttonStateWordingMapping,
     firstViewExpired,
-    updateButtonState
+    updateButtonState,
+    resetMainMessage
   };
 });
