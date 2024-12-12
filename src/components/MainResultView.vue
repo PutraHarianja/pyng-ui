@@ -16,22 +16,16 @@
         {{ introMessage }}
       </div>
       <ProductCard
-        image="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/catalog-image/106/MTA-155967442/br-m036969-11793_ringke-silicone-magnetic-case-samsung-s24-ultra-plus-casing-magsafe_full11-78d7e797.jpg"
-        title="Ringke Silicone Magnetic Case Samsung S24 Ultra Plus - Casing Magsafe"
-        :price="349000"
-        :originalPrice="null"
-        :discount="null"
-        :rating="5"
-        :sold="17"
-      />
-      <ProductCard
-        image="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium//115/MTA-95646949/hydra-_hydra-_full01.jpg"
-        title="Samsung S23 PLUS - HYDRA + Privacy Anti Spy Tempered Glass-Anti Gores-TG-Frame"
-        :price="79000"
-        :originalPrice="150000"
-        :discount="47"
-        :rating="5"
-        :sold="5"
+        v-for="(product, index) in products" 
+        :key="index"
+        :image="product.image_url"
+        :title="product.name"
+        :price="product.discounted_price"
+        :originalPrice="product.original_price"
+        :discount="product.discount"
+        :rating="product.rating"
+        :sold="product.sold_unit"
+        :url="product.product_url"
       />
       <LocationCard
         v-for="(location, index) in locations"

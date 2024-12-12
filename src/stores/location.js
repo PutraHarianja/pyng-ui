@@ -10,7 +10,7 @@ export const useLocationStore = defineStore('location', {
     error: null,
   }),
   actions: {
-    async fetchLocations(lat, long) {
+    async fetchLocations(lat, long, success = () => { }, failed = () => { }) {
       this.loading = true;
       this.error = null;
       try {
@@ -18,7 +18,6 @@ export const useLocationStore = defineStore('location', {
         //   latitute: lat,
         //   longitute: long,
         // });
-        console.log(`called http://localhost:5000/stores with: ${lat}, ${long}`)
         
         const response = { 
           message: "Certainly, here is the list of locations you requested, starting with the nearest to your location, feel free to reach out if you need more details.",
@@ -44,8 +43,10 @@ export const useLocationStore = defineStore('location', {
         
         this.locations = response.data
         this.introMessage = response.message
+        success(response.data)
       } catch (err) {
         this.error = err.message || 'Failed to fetch locations.';
+        failed(err)
       } finally {
         this.loading = false;
       }

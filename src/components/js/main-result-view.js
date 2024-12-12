@@ -1,4 +1,4 @@
-import { onMounted, ref } from 'vue'
+import { onBeforeMount, ref, computed } from 'vue'
 import Footer from "@/components/Footer.vue";
 import ProductCard from "@/components/ProductCard.vue";
 import LocationCard from "@/components/LocationCard.vue";
@@ -13,20 +13,27 @@ export default {
   },
   setup() {
     const productStore = useProductStore()
-    const locations = useLocationStore().locations
-    const introMessage = useLocationStore().introMessage || productStore.introMessage || ''
+    const locationStore = useLocationStore()
+
+    // Make products reactive using computed
+    const products = computed(() => productStore.products)
+    const locations = computed(() => locationStore.locations)
+    const introMessage = computed(() =>
+      locationStore.introMessage || productStore.introMessage || ''
+    )
 
     const userText = ref('')
 
     const fetchProducts = () => {
-      productStore.fetchProducts(userText.value);
+      productStore.fetchProducts(userText.value)
     };
 
-    onMounted(() => {
+    onBeforeMount(() => {
       fetchProducts()
     })
     return {
       productStore,
+      products,
       locations,
       introMessage
     }
