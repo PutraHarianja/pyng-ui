@@ -41,8 +41,8 @@ export const useLocationStore = defineStore('location', {
         await this.getUserLocation()
 
         const response = await axios.post('http://localhost:5000/stores', {
-          latitute: userLocation.latitute,
-          longitute: userLocation.longitute,
+          latitute: userLocation.latitute || 0,
+          longitute: userLocation.longitute || 0,
         },
         {
           headers: {
