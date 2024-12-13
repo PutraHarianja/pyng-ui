@@ -17,13 +17,13 @@
       <!-- Price & Discount -->
       <div class="flex items-center mt-2">
         <span class="text-indigo-600 font-medium text-base">
-          Rp{{ price }}
+          Rp{{ formattedPrice }}
         </span>
         <span
           v-if="originalPrice"
           class="text-gray-400 text-xs font-normal line-through ml-2"
         >
-          Rp{{ originalPrice }}
+          Rp{{ formattedOriginalPrice }}
         </span>
         <span
           v-if="discount"

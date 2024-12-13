@@ -1,4 +1,5 @@
-import { defineComponent, toRefs } from "vue";
+import { computed, defineComponent, toRefs } from "vue";
+import { formatNumberWithSeparator } from "@/utils/number";
 
 export default defineComponent({
   name: "ProductCard",
@@ -43,11 +44,19 @@ export default defineComponent({
       window.open(url.value, '_blank')
     }
 
+    const formattedPrice = computed(() => {
+      return formatNumberWithSeparator(price.value)
+    })
+
+    const formattedOriginalPrice = computed(() => {
+      return formatNumberWithSeparator(originalPrice.value)
+    })
+
     return {
       image,
       title,
-      price,
-      originalPrice,
+      formattedPrice,
+      formattedOriginalPrice,
       discount,
       rating,
       sold,
