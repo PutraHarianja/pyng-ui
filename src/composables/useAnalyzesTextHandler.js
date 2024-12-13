@@ -17,7 +17,7 @@ export function useAnalyzesTextHandler() {
     const doneExecute = (resp) => {
         mainMessageStore.updateGotAnswer(Boolean(resp));
         mainMessageStore.updateButtonState('default')
-        
+
         setTimeout(() => {
             audioElement.play().catch((error) => {
                 console.warn("Audio playback was blocked", error);
@@ -31,6 +31,17 @@ export function useAnalyzesTextHandler() {
         }
     }
 
+    const productKeywords = [
+        "phone", "mobile", "smartphone", "cellphone", "gadget",
+        "xiaomi", "samsung", "oppo", "vivo", "iphone", "android"
+    ]
+
+    const locationKeywords = [
+        "store", "near", "shops", "outlet", "location", "places", "find"
+    ]
+
+    const containsAny = (keywords, lowercasedText) => keywords.some(keyword => lowercasedText.includes(keyword));
+
     const handleText = async (text) => {
         mainMessageStore.updateButtonState('generating')
         productStore.resetProducts()
@@ -39,18 +50,14 @@ export function useAnalyzesTextHandler() {
 
         const lowercasedText = text.toLowerCase();
 
-        if (
-            lowercasedText.includes("phone")
-        ) {
+
+        if (containsAny(productKeywords, lowercasedText)) {
             console.log("text decided called productAPI")
             await productStore.fetchProducts(text, doneExecute);
             return;
         }
 
-        if (
-            lowercasedText.includes("store") &&
-            lowercasedText.includes("near")
-        ) {
+        if (containsAny(locationKeywords, lowercasedText)) {
             console.log("text decided called locationAPI")
             await locationStore.fetchLocations(doneExecute);
             return;
