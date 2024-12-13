@@ -11,6 +11,9 @@ export function useAnalyzesTextHandler() {
     const doneExecute = (resp) => {
         mainMessageStore.updateGotAnswer(Boolean(resp));
         mainMessageStore.updateButtonState('default')
+
+        let utterance = new SpeechSynthesisUtterance("Here is your result!");
+        speechSynthesis.speak(utterance);
     }
 
     const handleText = async (text) => {
