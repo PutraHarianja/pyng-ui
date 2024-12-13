@@ -65,6 +65,9 @@ export const useProductStore = defineStore('product', {
 
           this.introMessage = response.message
           this.products = response.data
+          console.log(response)
+          console.log(this.products)
+          console.log(this.introMessage)
 
           success(response)
 
