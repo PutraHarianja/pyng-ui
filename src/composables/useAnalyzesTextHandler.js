@@ -37,7 +37,8 @@ export function useAnalyzesTextHandler() {
     ]
 
     const locationKeywords = [
-        "store", "near", "shops", "outlet", "location", "places", "find"
+        "store", "near", "shops", "outlet", "location", "places", "find",
+        "blibli", "offline", "ary"
     ]
 
     const containsAny = (keywords, lowercasedText) => keywords.some(keyword => lowercasedText.includes(keyword));
