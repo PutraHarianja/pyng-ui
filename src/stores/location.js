@@ -7,8 +7,8 @@ export const useLocationStore = defineStore('location', {
     introMessage: "",
     locations: [],
     userLocation: {
-      latitude: null,
-      longitude: null,
+      latitude: 0,
+      longitude: 0,
     },
     loading: false,
     error: null,
@@ -34,21 +34,22 @@ export const useLocationStore = defineStore('location', {
       });
     },
     async fetchLocations(success = () => { }, failed = () => { }) {
+      console.log(`called API http://localhost:5000/stores with ${this.userLocation.latitude}, ${this.userLocation.longitude}`)
       this.loading = true
       this.error = null
-
       try {
-        await this.getUserLocation()
-
+        // await this.getUserLocation()
         const response = await axios.post('http://localhost:5000/stores', {
-          latitute: userLocation.latitute || 0,
-          longitute: userLocation.longitute || 0,
+          latitute: this.userLocation.latitude,
+          longitute: this.userLocation.longitude,
         },
         {
           headers: {
             'Content-Type': 'application/json'
           }
         });
+
+        console.log(response)
 
         console.log(`called API http://localhost:5000/stores with ${this.userLocation.latitude}, ${this.userLocation.longitude}`)
 
@@ -76,9 +77,9 @@ export const useLocationStore = defineStore('location', {
         //     }]
         //   };
 
-          this.locations = response.data
-          this.introMessage = response.message
-          success(response)
+          this.locations = response.data.data
+          this.introMessage = response.data.message
+          success(response.data)
 
         // }, 3000)
 

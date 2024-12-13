@@ -63,13 +63,13 @@ export const useProductStore = defineStore('product', {
         //     ]
         //   }
 
-          this.introMessage = response.message
-          this.products = response.data
-          console.log(response)
+          this.introMessage = response.data.message
+          this.products = response.data.data
+          console.log(response.data)
           console.log(this.products)
           console.log(this.introMessage)
 
-          success(response)
+          success(response.data)
 
         // }, 3000);
       } catch (err) {
