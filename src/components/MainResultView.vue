@@ -31,7 +31,7 @@
         </div>
         <div v-else>
           <div class="result-intro my-4">
-            <span class="text-red-600">PYNG!!! </span> {{ introMessage }}
+            <span class="text-red-600 font-semibold">PYNG!!! </span> {{ introMessage }}
           </div>
 
           <ProductCard

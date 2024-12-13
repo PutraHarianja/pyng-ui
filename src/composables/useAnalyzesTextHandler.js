@@ -2,19 +2,30 @@
 import { useProductStore } from "@/stores/product";
 import { useLocationStore } from "@/stores/location";
 import { useMainMessageStore } from "@/stores/mainMessage";
+import sound from '@/assets/ping_audio.mp3'
+
+const audioElement = new Audio(sound);
+
 
 export function useAnalyzesTextHandler() {
     const productStore = useProductStore();
     const locationStore = useLocationStore();
     const mainMessageStore = useMainMessageStore();
 
+    audioElement.preload = "auto";
+
     const doneExecute = (resp) => {
         mainMessageStore.updateGotAnswer(Boolean(resp));
         mainMessageStore.updateButtonState('default')
+        
+        setTimeout(() => {
+            audioElement.play().catch((error) => {
+                console.warn("Audio playback was blocked", error);
+            });
+        }, 1000);
 
         if (Boolean(resp)) {
             const responSpeech = `Here is your result!, ${resp.message}`
-            console.log('responSpeech', responSpeech)
             let utterance = new SpeechSynthesisUtterance(responSpeech);
             speechSynthesis.speak(utterance);
         }
