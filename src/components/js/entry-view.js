@@ -62,7 +62,7 @@ export default defineComponent({
 
     setInterval(() => {
       showFirst.value = !showFirst.value
-    }, 2000);
+    }, 200);
 
     return {
       transcript,

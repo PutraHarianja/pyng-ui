@@ -4,7 +4,7 @@
   <div
     class="flex flex-col p-8 h-screen w-full justify-center items-center bg-indigo-lightest"
   >
-    <h1 class="font-bold text-3xl text-center antialiased mb-6">
+    <h1 class="font-bold text-3xl text-center antialiased mb-8">
       <transition name="roll" mode="out-in">
         <span v-if="showFirst" key="first">
           Hello! Let's Shooping with <span class="text-red-500">PYNG!!!</span>
@@ -57,7 +57,7 @@
 }
 .roll-enter-active,
 .roll-leave-active {
-  transition: transform 1s ease, opacity 1s ease;
+  transition: transform 2s ease, opacity 2s ease;
 }
 
 .roll-enter {
