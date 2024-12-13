@@ -14,7 +14,9 @@
         </span>
       </transition>
     </h1>
-    <p class="text-gray-600 mb-5 text-center">{{ transcript }}</p>
+    <p v-if="transcript" class="text-gray-600 mb-5 text-center">
+      {{ transcript }}
+    </p>
     <div
       class="input-button bg-indigo-500 rounded-full text-sm py-8x min-h-10 flex justify-center items-center text-white aspect-square w-3/4"
       @click="startVoiceRecognition"

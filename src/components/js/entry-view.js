@@ -10,7 +10,7 @@ export default defineComponent({
     const { handleText } = useAnalyzesTextHandler()
 
     // Computed
-    const transcript = ref('Your voice input will appear here...')
+    const transcript = ref('')
 
     const buttonState = computed(() => {
       return mainMessageStore.buttonState
@@ -24,7 +24,7 @@ export default defineComponent({
     const startVoiceRecognition = () => {
       if (buttonState.value.state !== mainMessageStore.buttonStateWordingMapping.default.state) return
 
-      transcript.value = 'Your voice input will appear here...'
+      transcript.value = ''
       if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
         const recognition = new SpeechRecognition()
