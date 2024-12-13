@@ -36,8 +36,9 @@ export const useProductStore = defineStore('product', {
         //           original_price: 4999000,
         //           productId: 1,
         //           product_url: "https://www.blibli.com/p/official-xiaomi-poco-f6-8-256gb-12-512gb-snapdragon-8s-gen-3-liquidcool-technology-4-0-dengan-iceloop-layar-amoled-crystalres-120hz-flow/ps--XIO-60022-01059?ds=XIO-60022-01059-00003",
-        //           rating: 4.9,
-        //           sold_unit: 4700
+        //          rating: 4.9,
+        //          sold_unit: 4700,
+        //          discount_percentage: 10
         //         },
         //         {
         //           category: "ANDROID",
@@ -48,7 +49,8 @@ export const useProductStore = defineStore('product', {
         //           productId: 3,
         //           product_url: "https://www.blibli.com/p/xiaomi-14t-pro-12-256-12-512-leica-summilux-optical-lens-light-fusion-900-image-sensor-mediatek-dimensity-9300-144hz-ai-display-5000mah/ps--XIO-60022-01099?ds=XIO-60022-01099-00001",
         //           rating: 4.7,
-        //           sold_unit: 931
+        //           sold_unit: 931,
+        //          discount_percentage: 10
         //         },
         //         {
         //           category: "ANDROID",
@@ -59,7 +61,8 @@ export const useProductStore = defineStore('product', {
         //           productId: 5,
         //           product_url: "https://www.blibli.com/p/xiaomi-redmi-a3-4gb-128gb-layar-muluz-90-hz-sensor-sidik-jari-face-unlock-desain-inovatif-official-store/ps--XIO-60022-01000?ds=XIO-60022-01000-00002",
         //           rating: 4.9,
-        //           sold_unit: 984
+        //           sold_unit: 984,
+        //          discount_percentage: 10
         //         }
         //       ]
         //     }

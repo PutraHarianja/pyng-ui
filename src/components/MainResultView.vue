@@ -41,7 +41,7 @@
             :title="product.name"
             :price="product.discounted_price"
             :originalPrice="product.original_price"
-            :discount="product.discount"
+            :discount="product.discount_percentage"
             :rating="product.rating"
             :sold="product.sold_unit"
             :url="product.product_url"
