@@ -43,6 +43,11 @@ export const useLocationStore = defineStore('location', {
         const response = await axios.post('http://localhost:5000/stores', {
           latitute: userLocation.latitute,
           longitute: userLocation.longitute,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
         });
 
         console.log(`called API http://localhost:5000/stores with ${this.userLocation.latitude}, ${this.userLocation.longitude}`)

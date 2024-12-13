@@ -16,6 +16,10 @@ export const useProductStore = defineStore('product', {
       try {
         const response = await axios.post('http://localhost:5000/products', {
           userText,
+        }, {
+            headers: {
+              'Content-Type': 'application/json'
+            }
         });
 
         // setTimeout(() => {
