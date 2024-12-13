@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="border rounded-lg shadow-md bg-white overflow-hidden mb-4"
+    class="border rounded-lg shadow-md bg-white overflow-hidden mb-4 cursor-pointer"
     @click="cardClicked"
   >
     <!-- Top: Image -->

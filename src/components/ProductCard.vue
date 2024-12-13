@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="flex border rounded-lg shadow-sm p-3 mb-4 bg-white"
+    class="flex border rounded-lg shadow-sm p-3 mb-4 bg-white cursor-pointer"
     @click="onCardClicked"
   >
     <!-- Left: Image -->

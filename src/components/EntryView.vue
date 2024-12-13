@@ -18,7 +18,7 @@
       {{ transcript }}
     </p>
     <div
-      class="input-button bg-indigo-500 rounded-full text-sm py-8x min-h-10 flex justify-center items-center text-white aspect-square w-3/4"
+      class="input-button bg-indigo-500 rounded-full text-sm py-8x min-h-10 flex justify-center items-center text-white aspect-square w-3/4 cursor-pointer"
       @click="startVoiceRecognition"
     >
       <div>
@@ -26,21 +26,19 @@
           <img
             v-if="buttonState.state === 'default'"
             src="@/assets/microphone-colored.gif"
-            alt=""
-            srcset=""
+            alt="Microphone-icon"
             class="h-60"
           />
           <img
             v-else-if="buttonState.state === 'listening'"
             src="@/assets/ear-listening-colored.gif"
-            alt=""
-            srcset=""
+            alt="Ear icon"
             class="h-60"
           />
           <img
             v-else-if="buttonState.state === 'generating'"
             src="@/assets/gear-generating-colored.gif"
-            alt=""
+            alt="Gear Icon"
             srcset=""
             class="h-60"
           />

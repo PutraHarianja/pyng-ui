@@ -73,7 +73,7 @@ export const useLocationStore = defineStore('location', {
 
           this.locations = response.data
           this.introMessage = response.message
-          success(response.data)
+          success(response)
 
         }, 3000)
 

@@ -5,7 +5,7 @@
     <p class="text-gray-600">{{ transcript }}</p>
     <button
       type="button"
-      class="input-button bg-indigo-500 rounded-lg text-sm py-8x min-h-14 w-full flex justify-center items-center text-white"
+      class="input-button bg-indigo-500 rounded-lg text-sm py-8x min-h-14 w-full flex justify-center items-center text-white cursor-pointer"
       @click="startVoiceRecognition"
     >
       <transition name="fade" mode="out-in">

@@ -12,8 +12,12 @@ export function useAnalyzesTextHandler() {
         mainMessageStore.updateGotAnswer(Boolean(resp));
         mainMessageStore.updateButtonState('default')
 
-        let utterance = new SpeechSynthesisUtterance("Here is your result!");
-        speechSynthesis.speak(utterance);
+        if (Boolean(resp)) {
+            const responSpeech = `Here is your result!, ${resp.message}`
+            console.log('responSpeech', responSpeech)
+            let utterance = new SpeechSynthesisUtterance(responSpeech);
+            speechSynthesis.speak(utterance);
+        }
     }
 
     const handleText = async (text) => {

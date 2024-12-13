@@ -62,7 +62,7 @@ export const useProductStore = defineStore('product', {
           this.introMessage = response.message
           this.products = response.data
 
-          success(response.data)
+          success(response)
 
         }, 3000);
       } catch (err) {

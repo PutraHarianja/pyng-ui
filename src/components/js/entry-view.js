@@ -22,6 +22,14 @@ export default defineComponent({
 
     // Method
     const startVoiceRecognition = () => {
+      // TESTING WALKAROUND
+      // transcript.value = "phone"
+      // // transcript.value = "nearby store"
+      // handleText(transcript.value)
+      // return
+
+
+
       if (buttonState.value.state !== mainMessageStore.buttonStateWordingMapping.default.state) return
 
       transcript.value = ''
